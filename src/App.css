@@ -1,0 +1,105 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2c3e50;
+  --background-color: #ecf0f1;
+  --text-color: #34495e;
+  --border-color: #bdc3c7;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "Arial", sans-serif;
+}
+
+.cv-application {
+  display: flex;
+  max-width: 1200px;
+  margin: 2rem auto;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.edit-section {
+  flex: 1;
+  padding: 2rem;
+  background-color: var(--secondary-color);
+}
+
+.preview-section {
+  flex: 1;
+  padding: 2rem;
+  background-color: white;
+}
+
+.general-info,
+.education,
+.experience {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.cv-preview h1 {
+  color: var(--secondary-color);
+  font-size: 2.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.cv-preview h2 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin-top: 1.5rem;
+}
+
+.cv-preview p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.top-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.top-buttons button {
+  flex: 1;
+  margin: 0 0.5rem;
+}
