@@ -10,28 +10,35 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .cv-application {
   display: flex;
-  max-width: 1200px;
-  margin: 2rem auto;
+  flex: 1;
+  max-width: 100%;
+  margin: 0;
   background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
 }
 
 .edit-section {
   flex: 1;
   padding: 2rem;
   background-color: var(--secondary-color);
+  overflow-y: auto;
+  max-height: 100vh;
 }
 
 .preview-section {
   flex: 1;
   padding: 2rem;
   background-color: white;
+  overflow-y: auto;
+  max-height: 100vh;
 }
 
 .general-info,
@@ -61,7 +68,7 @@ textarea {
 }
 
 button {
-  background-color: var(--primary-color);
+  background-color: #222;
   color: white;
   border: none;
   padding: 0.8rem 1.2rem;
@@ -72,25 +79,66 @@ button {
 }
 
 button:hover {
-  background-color: #2980b9;
+  background-color: #444;
+}
+
+.cv-preview {
+  flex: 2;
+  padding: 2rem;
+  background-color: white;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.cv-preview header {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .cv-preview h1 {
   color: var(--secondary-color);
   font-size: 2.5rem;
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cv-preview header p {
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.cv-preview section {
+  margin-bottom: 2rem;
 }
 
 .cv-preview h2 {
   color: var(--primary-color);
   font-size: 1.8rem;
-  margin-top: 1.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-.cv-preview p {
-  margin: 0.5rem 0;
-  line-height: 1.6;
+.cv-preview ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.cv-preview .job-header,
+.cv-preview .education-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.cv-preview .job-title {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.cv-preview .job,
+.cv-preview .education-item {
+  margin-bottom: 1.5rem;
 }
 
 .top-buttons {
@@ -102,4 +150,18 @@ button:hover {
 .top-buttons button {
   flex: 1;
   margin: 0 0.5rem;
+}
+
+.edit-button {
+  background-color: #222;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.edit-button:hover {
+  background-color: #444;
 }
