@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 
 function GeneralInfo({ setGeneralInfo }) {
@@ -55,7 +56,7 @@ function GeneralInfo({ setGeneralInfo }) {
           <p>Name: {info.name}</p>
           <p>Email: {info.email}</p>
           <p>Phone: {info.phone}</p>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
+          <button className="edit-button" onClick={() => setIsEditing(true)}>Edit</button>
         </div>
       )}
     </div>
