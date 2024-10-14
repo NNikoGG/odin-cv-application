@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import GeneralInfo from './components/GeneralInfo'
 import Education from './components/Education'
@@ -16,6 +16,10 @@ function App() {
   })
   const [education, setEducation] = useState([])
   const [experience, setExperience] = useState([])
+
+  useEffect(() => {
+    loadExample();
+  }, []);
 
   const loadExample = () => {
     setGeneralInfo({
