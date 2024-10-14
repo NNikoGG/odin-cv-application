@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
 
-function Education({ setEducation }) {
-  const [educations, setEducations] = useState([]);
+function Education({ education, setEducation }) {
   const [currentEducation, setCurrentEducation] = useState({
     school: '',
     study: '',
@@ -22,7 +21,6 @@ function Education({ setEducation }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setEducations((prevEducations) => [...prevEducations, currentEducation]);
     setEducation((prevEducation) => [...prevEducation, currentEducation]);
     setCurrentEducation({
       school: '',
@@ -79,7 +77,7 @@ function Education({ setEducation }) {
         />
         <button type="submit">Add Education</button>
       </form>
-      {educations.map((edu, index) => (
+      {education.map((edu, index) => (
         <div key={index}>
           <p>School: {edu.school}</p>
           <p>Study: {edu.study}</p>

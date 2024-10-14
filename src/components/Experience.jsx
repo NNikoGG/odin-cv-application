@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
 
-function Experience({ setExperience }) {
-  const [jobs, setJobs] = useState([]);
+function Experience({ experience, setExperience }) {
   const [currentJob, setCurrentJob] = useState({
     company: '',
     position: '',
@@ -22,7 +21,6 @@ function Experience({ setExperience }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setJobs((prevJobs) => [...prevJobs, currentJob]);
     setExperience((prevExperience) => [...prevExperience, currentJob]);
     setCurrentJob({
       company: '',
@@ -79,7 +77,7 @@ function Experience({ setExperience }) {
         />
         <button type="submit">Add Job</button>
       </form>
-      {jobs.map((job, index) => (
+      {experience.map((job, index) => (
         <div key={index}>
           <p>Company: {job.company}</p>
           <p>Position: {job.position}</p>

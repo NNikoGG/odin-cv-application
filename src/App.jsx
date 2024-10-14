@@ -6,7 +6,14 @@ import Experience from './components/Experience'
 import CVPreview from './components/CVPreview'
 
 function App() {
-  const [generalInfo, setGeneralInfo] = useState({})
+  const [generalInfo, setGeneralInfo] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    location: '',
+    summary: '',
+    skills: []
+  })
   const [education, setEducation] = useState([])
   const [experience, setExperience] = useState([])
 
@@ -52,13 +59,20 @@ function App() {
   }
 
   const clearResume = () => {
-    setGeneralInfo({})
+    setGeneralInfo({
+      name: '',
+      email: '',
+      phone: '',
+      location: '',
+      summary: '',
+      skills: []
+    })
     setEducation([])
     setExperience([])
   }
 
   const saveAsPDF = () => {
-    // Pending
+    // Implement PDF saving functionality
   }
 
   return (
@@ -69,9 +83,9 @@ function App() {
           <button onClick={clearResume}>Clear Resume</button>
           <button onClick={saveAsPDF}>Save as PDF</button>
         </div>
-        <GeneralInfo setGeneralInfo={setGeneralInfo} />
-        <Education setEducation={setEducation} />
-        <Experience setExperience={setExperience} />
+        <GeneralInfo generalInfo={generalInfo} setGeneralInfo={setGeneralInfo} />
+        <Education education={education} setEducation={setEducation} />
+        <Experience experience={experience} setExperience={setExperience} />
       </div>
       <div className="preview-section">
         <CVPreview 
