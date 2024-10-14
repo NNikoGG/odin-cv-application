@@ -37,6 +37,15 @@ function Experience({ experience, setExperience }) {
   return (
     <div className="experience">
       <h2>Work Experience</h2>
+      {experience.map((job, index) => (
+        <div key={index}>
+          <p>Company: {job.company}</p>
+          <p>Position: {job.position}</p>
+          <p>Location: {job.location}</p>
+          <p>Duration: {job.startDate} - {job.endDate}</p>
+          <p>Responsibilities: {job.responsibilities}</p>
+        </div>
+      ))}
       {isEditing ? (
         <form onSubmit={handleSubmit}>
           <input
@@ -83,15 +92,6 @@ function Experience({ experience, setExperience }) {
       ) : (
         <button onClick={() => setIsEditing(true)}>Add New Job</button>
       )}
-      {experience.map((job, index) => (
-        <div key={index}>
-          <p>Company: {job.company}</p>
-          <p>Position: {job.position}</p>
-          <p>Location: {job.location}</p>
-          <p>Duration: {job.startDate} - {job.endDate}</p>
-          <p>Responsibilities: {job.responsibilities}</p>
-        </div>
-      ))}
     </div>
   );
 }

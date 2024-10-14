@@ -37,6 +37,15 @@ function Education({ education, setEducation }) {
   return (
     <div className="education">
       <h2>Education</h2>
+      {education.map((edu, index) => (
+        <div key={index}>
+          <p>School: {edu.school}</p>
+          <p>Study: {edu.study}</p>
+          <p>Location: {edu.location}</p>
+          <p>Duration: {edu.startDate} - {edu.endDate}</p>
+          <p>Achievements: {edu.achievements}</p>
+        </div>
+      ))}
       {isEditing ? (
         <form onSubmit={handleSubmit}>
           <input
@@ -83,15 +92,6 @@ function Education({ education, setEducation }) {
       ) : (
         <button onClick={() => setIsEditing(true)}>Add New Education</button>
       )}
-      {education.map((edu, index) => (
-        <div key={index}>
-          <p>School: {edu.school}</p>
-          <p>Study: {edu.study}</p>
-          <p>Location: {edu.location}</p>
-          <p>Duration: {edu.startDate} - {edu.endDate}</p>
-          <p>Achievements: {edu.achievements}</p>
-        </div>
-      ))}
     </div>
   );
 }
