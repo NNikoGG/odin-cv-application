@@ -90,7 +90,7 @@ function Education({ education, setEducation }) {
           <button type="submit">Add Education</button>
         </form>
       ) : (
-        <button onClick={() => setIsEditing(true)}>Add New Education</button>
+        <button className='edit-button' onClick={() => setIsEditing(true)}>Add New Education</button>
       )}
     </div>
   );

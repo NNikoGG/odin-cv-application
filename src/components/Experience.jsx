@@ -90,7 +90,7 @@ function Experience({ experience, setExperience }) {
           <button type="submit">Add Job</button>
         </form>
       ) : (
-        <button onClick={() => setIsEditing(true)}>Add New Job</button>
+        <button className='edit-button' onClick={() => setIsEditing(true)}>Add New Job</button>
       )}
     </div>
   );
