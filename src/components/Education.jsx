@@ -2,6 +2,7 @@
 import { useState } from 'react';
 
 function Education({ education, setEducation }) {
+  const [isEditing, setIsEditing] = useState(false);
   const [currentEducation, setCurrentEducation] = useState({
     school: '',
     study: '',
@@ -30,53 +31,58 @@ function Education({ education, setEducation }) {
       endDate: '',
       achievements: '',
     });
+    setIsEditing(false);
   };
 
   return (
     <div className="education">
       <h2>Education</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="school"
-          value={currentEducation.school}
-          onChange={handleChange}
-          placeholder="School Name"
-        />
-        <input
-          type="text"
-          name="study"
-          value={currentEducation.study}
-          onChange={handleChange}
-          placeholder="Field of Study"
-        />
-        <input
-          type="text"
-          name="location"
-          value={currentEducation.location}
-          onChange={handleChange}
-          placeholder="Location"
-        />
-        <input
-          type="date"
-          name="startDate"
-          value={currentEducation.startDate}
-          onChange={handleChange}
-        />
-        <input
-          type="date"
-          name="endDate"
-          value={currentEducation.endDate}
-          onChange={handleChange}
-        />
-        <textarea
-          name="achievements"
-          value={currentEducation.achievements}
-          onChange={handleChange}
-          placeholder="Achievements (separate with commas)"
-        />
-        <button type="submit">Add Education</button>
-      </form>
+      {isEditing ? (
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="school"
+            value={currentEducation.school}
+            onChange={handleChange}
+            placeholder="School Name"
+          />
+          <input
+            type="text"
+            name="study"
+            value={currentEducation.study}
+            onChange={handleChange}
+            placeholder="Field of Study"
+          />
+          <input
+            type="text"
+            name="location"
+            value={currentEducation.location}
+            onChange={handleChange}
+            placeholder="Location"
+          />
+          <input
+            type="date"
+            name="startDate"
+            value={currentEducation.startDate}
+            onChange={handleChange}
+          />
+          <input
+            type="date"
+            name="endDate"
+            value={currentEducation.endDate}
+            onChange={handleChange}
+          />
+          <textarea
+            name="achievements"
+            value={currentEducation.achievements}
+            onChange={handleChange}
+            placeholder="Achievements (separate with commas)"
+          />
+          <button type="submit">Add Education</button>
+        </form>
+      ) : (
+        <button onClick={() => setIsEditing(true)}>Add New Education</button>
+      )}
       {education.map((edu, index) => (
         <div key={index}>
           <p>School: {edu.school}</p>
