@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 function Education({ education, setEducation }) {
   const [isEditing, setIsEditing] = useState(false);
+  const [editingIndex, setEditingIndex] = useState(null);
   const [currentEducation, setCurrentEducation] = useState({
     school: '',
     study: '',
@@ -22,7 +23,15 @@ function Education({ education, setEducation }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setEducation((prevEducation) => [...prevEducation, currentEducation]);
+    if (editingIndex !== null) {
+      setEducation((prevEducation) => {
+        const newEducation = [...prevEducation];
+        newEducation[editingIndex] = currentEducation;
+        return newEducation;
+      });
+    } else {
+      setEducation((prevEducation) => [...prevEducation, currentEducation]);
+    }
     setCurrentEducation({
       school: '',
       study: '',
@@ -32,6 +41,17 @@ function Education({ education, setEducation }) {
       achievements: '',
     });
     setIsEditing(false);
+    setEditingIndex(null);
+  };
+
+  const handleEdit = (index) => {
+    setCurrentEducation(education[index]);
+    setIsEditing(true);
+    setEditingIndex(index);
+  };
+
+  const handleRemove = (index) => {
+    setEducation((prevEducation) => prevEducation.filter((_, i) => i !== index));
   };
 
   return (
@@ -44,6 +64,8 @@ function Education({ education, setEducation }) {
           <p>Location: {edu.location}</p>
           <p>Duration: {edu.startDate} - {edu.endDate}</p>
           <p>Achievements: {edu.achievements}</p>
+          <button className='edit-button' onClick={() => handleEdit(index)}>Edit</button>
+          <button className='remove-button' onClick={() => handleRemove(index)}>Remove</button>
         </div>
       ))}
       {isEditing ? (
@@ -87,7 +109,7 @@ function Education({ education, setEducation }) {
             onChange={handleChange}
             placeholder="Achievements (separate with commas)"
           />
-          <button type="submit">Add Education</button>
+          <button type="submit">{editingIndex !== null ? 'Update' : 'Add'} Education</button>
         </form>
       ) : (
         <button className='edit-button' onClick={() => setIsEditing(true)}>Add New Education</button>

@@ -71,7 +71,7 @@ function GeneralInfo({ generalInfo, setGeneralInfo }) {
             onChange={handleSkillsChange}
             placeholder="Skills (comma-separated)"
           />
-          <button type="submit">Submit</button>
+          <button type="submit">Done</button>
         </form>
       ) : (
         <div>

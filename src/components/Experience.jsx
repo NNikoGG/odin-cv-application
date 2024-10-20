@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 function Experience({ experience, setExperience }) {
   const [isEditing, setIsEditing] = useState(false);
+  const [editingIndex, setEditingIndex] = useState(null);
   const [currentJob, setCurrentJob] = useState({
     company: '',
     position: '',
@@ -22,7 +23,15 @@ function Experience({ experience, setExperience }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setExperience((prevExperience) => [...prevExperience, currentJob]);
+    if (editingIndex !== null) {
+      setExperience((prevExperience) => {
+        const newExperience = [...prevExperience];
+        newExperience[editingIndex] = currentJob;
+        return newExperience;
+      });
+    } else {
+      setExperience((prevExperience) => [...prevExperience, currentJob]);
+    }
     setCurrentJob({
       company: '',
       position: '',
@@ -32,6 +41,17 @@ function Experience({ experience, setExperience }) {
       responsibilities: '',
     });
     setIsEditing(false);
+    setEditingIndex(null);
+  };
+
+  const handleEdit = (index) => {
+    setCurrentJob(experience[index]);
+    setIsEditing(true);
+    setEditingIndex(index);
+  };
+
+  const handleRemove = (index) => {
+    setExperience((prevExperience) => prevExperience.filter((_, i) => i !== index));
   };
 
   return (
@@ -44,6 +64,8 @@ function Experience({ experience, setExperience }) {
           <p>Location: {job.location}</p>
           <p>Duration: {job.startDate} - {job.endDate}</p>
           <p>Responsibilities: {job.responsibilities}</p>
+          <button className='edit-button' onClick={() => handleEdit(index)}>Edit</button>
+          <button className='remove-button' onClick={() => handleRemove(index)}>Remove</button>
         </div>
       ))}
       {isEditing ? (
@@ -87,7 +109,7 @@ function Experience({ experience, setExperience }) {
             onChange={handleChange}
             placeholder="Main Responsibilities (separate with commas)"
           />
-          <button type="submit">Add Job</button>
+          <button type="submit">{editingIndex !== null ? 'Update' : 'Add'} Job</button>
         </form>
       ) : (
         <button className='edit-button' onClick={() => setIsEditing(true)}>Add New Job</button>
