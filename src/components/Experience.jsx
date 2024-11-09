@@ -59,16 +59,67 @@ function Experience({ experience, setExperience }) {
       <h2>Work Experience</h2>
       {experience.map((job, index) => (
         <div key={index}>
-          <p>Company: {job.company}</p>
-          <p>Position: {job.position}</p>
-          <p>Location: {job.location}</p>
-          <p>Duration: {job.startDate} - {job.endDate}</p>
-          <p>Responsibilities: {job.responsibilities}</p>
-          <button className='edit-button' onClick={() => handleEdit(index)}>Edit</button>
-          <button className='remove-button' onClick={() => handleRemove(index)}>Remove</button>
+          {editingIndex === index ? (
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="company"
+                value={currentJob.company}
+                onChange={handleChange}
+                placeholder="Company Name"
+              />
+              <input
+                type="text"
+                name="position"
+                value={currentJob.position}
+                onChange={handleChange}
+                placeholder="Position"
+              />
+              <input
+                type="text"
+                name="location"
+                value={currentJob.location}
+                onChange={handleChange}
+                placeholder="Location"
+              />
+              <input
+                type="date"
+                name="startDate"
+                value={currentJob.startDate}
+                onChange={handleChange}
+              />
+              <input
+                type="date"
+                name="endDate"
+                value={currentJob.endDate}
+                onChange={handleChange}
+              />
+              <textarea
+                name="responsibilities"
+                value={currentJob.responsibilities}
+                onChange={handleChange}
+                placeholder="Main Responsibilities (separate with commas)"
+              />
+              <button type="submit">Update Job</button>
+              <button type="button" onClick={() => {
+                setEditingIndex(null);
+                setIsEditing(false);
+              }}>Cancel</button>
+            </form>
+          ) : (
+            <>
+              <p>Company: {job.company}</p>
+              <p>Position: {job.position}</p>
+              <p>Location: {job.location}</p>
+              <p>Duration: {job.startDate} - {job.endDate}</p>
+              <p>Responsibilities: {job.responsibilities}</p>
+              <button className='edit-button' onClick={() => handleEdit(index)}>Edit</button>
+              <button className='remove-button' onClick={() => handleRemove(index)}>Remove</button>
+            </>
+          )}
         </div>
       ))}
-      {isEditing ? (
+      {isEditing && editingIndex === null ? (
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -109,7 +160,8 @@ function Experience({ experience, setExperience }) {
             onChange={handleChange}
             placeholder="Main Responsibilities (separate with commas)"
           />
-          <button type="submit">{editingIndex !== null ? 'Update' : 'Add'} Job</button>
+          <button type="submit">Add Job</button>
+          <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
         </form>
       ) : (
         <button className='edit-button' onClick={() => setIsEditing(true)}>Add New Job</button>
