@@ -39,6 +39,14 @@ function App() {
         startDate: '2015-09-01',
         endDate: '2019-05-31',
         achievements: 'Dean\'s List, Graduated with Honors, Capstone Project: AI-powered Chatbot'
+      },
+      {
+        school: 'University of Technology',
+        study: 'Bachelor of Science in Computer Science',
+        location: 'San Francisco, CA',
+        startDate: '2015-09-01',
+        endDate: '2019-05-31',
+        achievements: 'Dean\'s List, Graduated with Honors, Capstone Project: AI-powered Chatbot'
       }
     ])
 

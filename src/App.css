@@ -97,10 +97,34 @@ button:hover {
   margin: 0 auto;
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
   position: relative;
   transform: scale(0.72);
   transform-origin: top center;
+}
+
+.cv-preview-window {
+  position: relative;
+  overflow: hidden;
+}
+
+.cv-preview-content {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.cv-preview section {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.education-item,
+.job {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: 1.5rem;
 }
 
 .cv-preview header {
@@ -117,10 +141,6 @@ button:hover {
 .cv-preview header p {
   font-size: 1.1rem;
   color: var(--text-color);
-}
-
-.cv-preview section {
-  margin-bottom: 2rem;
 }
 
 .cv-preview h2 {
@@ -184,15 +204,50 @@ button:hover {
 
 .cv-preview-page {
   height: 100%;
+  position: relative;
   overflow: hidden;
 }
 
 .pagination-controls {
-  position: absolute;
-  bottom: 1rem;
+  position: fixed;
+  bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 1rem;
   z-index: 1000;
+  background-color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.achievements-list {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.achievement-item {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: 0.5rem;
+}
+
+.education-item {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+
+.cv-preview section {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  position: relative;
+}
+
+.education-item,
+.job {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  position: relative;
 }
