@@ -33,14 +33,18 @@ body {
   background-color: var(--secondary-color);
   overflow-y: auto;
   max-height: 100vh;
+  scrollbar-width: none;
 }
 
 .preview-section {
   min-width: 600px;
   padding: 2rem;
-  background-color: white;
-  overflow-y: auto;
+  background-color: var(--secondary-color);
   max-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
 }
 
 .general-info,
@@ -87,12 +91,16 @@ button:hover {
 }
 
 .cv-preview {
-  min-width: 600px;
-  width: 100%;
-  padding: 2rem;
+  width: 210mm;
+  height: 297mm;
+  padding: 20mm;
+  margin: 0 auto;
   background-color: white;
-  overflow-y: auto;
-  max-height: 100vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  transform: scale(0.72);
+  transform-origin: top center;
 }
 
 .cv-preview header {
@@ -172,4 +180,19 @@ button:hover {
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.9rem;
+}
+
+.cv-preview-page {
+  height: 100%;
+  overflow: hidden;
+}
+
+.pagination-controls {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 1000;
 }
